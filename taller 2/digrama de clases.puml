@@ -1,0 +1,45 @@
+@startuml
+@startuml
+
+class Tarea {
+    - titulo: String
+    - descripcion: String
+    - fechaCreacion: String
+    - fechaLimite: String
+    - estado: boolean
+    - correoUsuario: String
+}
+
+class Usuario {
+    - nombreUsuario: String
+    - contraseña: String
+    - correo: String
+    - tareas: List<Tarea>
+    + agregarTarea(t: Tarea): void
+    + verTareas(): void
+}
+
+class Administrador extends Usuario {
+    - subordinados: List<Usuario>
+    + registrarUsuario(nombre: String, correo: String): Usuario
+    + agregarTareaUsuario(correo: String, tarea: Tarea): void
+    + eliminarTareaUsuario(correo: String, titulo: String): void
+}
+
+class Sistema {
+    - usuarios: List<Usuario>
+    - tareas: List<Tarea>
+    + leerUsuariosDesdeArchivo(arch: String): void
+    + leerTareasDesdeArchivo(arch: String): void
+    + guardarDatos(): void
+    + iniciarSesion(usuario: String, contraseña: String): Usuario
+    + registrarAdministrador(nombre: String, correo: String): Administrador
+    + mostrarMenu(): void
+}
+
+Usuario "1" *-- "*" Tarea: posee >
+Administrador "1" *-- "*" Usuario: supervisa >
+Sistema "1" *-- "*" Usuario: administra >
+Sistema "1" *-- "*" Tarea: gestiona >
+
+@enduml

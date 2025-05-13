@@ -1,0 +1,6 @@
+Marx13,MC123,marcelo.ce@gmail.com
+Chubi,CH123,Vicho.cs@gmail.com
+JappiBoi,JA123,Sepu@gmail.com
+Jmanu,JM323,Jmannu@gamil.com
+Alonso,MM222,Alonx@gmail.com
+
